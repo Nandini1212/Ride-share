@@ -1,0 +1,20 @@
+doctype html
+head
+    title Car-Rental
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    script(type='text/javascript', src="javascripts/signup.js")
+    script(type='text/javascript', src="javascripts/hashing/md5.js")
+.login-div
+    .caption
+        span.border Car Rental
+    .login-page
+        .user-form
+            input(type='text' placeholder='name' id='txtSignUpUsername' required='')
+            input(type='password' placeholder='password' id='txtSignUpPassword' required='')
+            input(type='email' placeholder='email address' pattern='[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}' id='txtSignUpEmailAddress' required='')
+            input(type='tel' placeholder='phone number' maxlength=10 onkeypress='return isNumber(event)' pattern='[0-9]{3}[0-9]{3}[0-9]{4}' id='txtSignUpPhoneNumber' required='')
+            button(id='btnSignUp' onclick='signup();') Sign Up
+            p.message
+                | Already registered?
+                a(href='/login') Sign In

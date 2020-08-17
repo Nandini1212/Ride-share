@@ -1,0 +1,17 @@
+doctype html
+head
+    title Car-Rental
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    script(type='text/javascript', src="javascripts/custom.js")
+.login-div
+    .caption
+        span.border Car Rental
+    .login-page
+        .user-form
+            input(type='text' placeholder='username' id='txtUsername' required='')
+            input(type='password' placeholder='password' id='txtPassword' required='')
+            button(onclick='login();') login
+            p.message
+                | Not registered?
+                a(href='/signup') Create an account

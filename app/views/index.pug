@@ -1,0 +1,81 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+
+
+doctype html
+head
+  title Car-Rental
+  link(rel='stylesheet', type='text/css', href='/stylesheets/userdetails.css')
+  link(rel='stylesheet', type='text/css', href='/stylesheets/menu.css')
+  script(type='text/javascript', src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  script(type='text/javascript', src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+  script(type='text/javascript', src="javascripts/custom.js")
+  script(type='text/javascript', src="javascripts/hashing/md5.js")
+
+div
+  div
+    header.clearfix
+      .container
+        .header-left
+          h1 Car Rental
+        .header-right
+          label(for='open')
+            span.hidden-desktop
+          input#open(type='checkbox' name='')
+          nav(id=nav)
+            a(href='#') Home
+            a(href='#') Inspiration
+            a(href='#') Articles
+            a(href='#') Works
+            a(href='#') Contact
+    section.clearfix
+      .container
+        div
+          section
+            input#profile(type='radio' value='1' name='tractor' checked='checked')
+            input#settings(type='radio' value='2' name='tractor')
+            input#posts(type='radio' value='3' name='tractor')
+            input#books(type='radio' value='4' name='tractor')
+            nav
+              label.fa.fa-camera-retro(for='profile')
+              label.fa.fa-film(for='settings')
+              label.fa.fa-calendar(for='posts')
+              label.fa.fa-list-alt(for='books')
+            article.uno
+              h2
+                img(alt='' src='../../images/users.png')
+                |       EsCss by Kseso
+                span Spanish Css blog
+              footer
+                ul
+                  li.fa.fa-link
+                  li.fa.fa-bar-chart
+                  li.fa.fa-sitemap
+                  li.fa.fa-wrench
+                  li.fa.fa-magic
+            article.dos.fa.fa-wrench
+              p
+                | hgfkjsdhgkjhsdkgjhsdkgjsdhgkjsdhhjdshg ghskdjhgs shgk sdhgksd sgdgsdg dsgsdg sh rje wr e rj ertj rw jw rj wrj wr jw rj wrj  j wrj wr jw jw jw.
+            article.tres.fa.fa-beer
+              ol
+                li agsgasg
+                li asgasgas
+                li hsdhsdh
+                li hsdhsdh
+                li sdhsdhdsh
+                li shsdhsdhsdh
+            article.cuatro.fa.fa-copy
+              dl
+                dt qwgqwgqw
+                dd
+                  | gqwgwqgqwgerge
+                dt @Font-face y sus problemas
+                dd
+                  | qgwqwgqw gqwgqwghwq wehwe rh wehwe hwe hwe h hwe h weh we hwe hwe h
+

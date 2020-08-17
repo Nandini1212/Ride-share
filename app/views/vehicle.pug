@@ -1,0 +1,58 @@
+extends layout
+
+block scripts
+    script(type='text/javascript' src="/javascripts/vehicle.js")
+
+block css
+    link(rel='stylesheet', type='text/css', href='/stylesheets/booking.css')
+
+block content
+    .container(style="background-color:#dee2e6; margin-top: 2%; padding-top: 0.2%;")
+        ul.nav.nav-pills
+            li.nav-item
+                a.nav-link.active(href='/booking') Vehicles
+            li.nav-item
+                a.nav-link(href='/booking/locations') Rental Locations
+        br
+        input.form-control(type='search' id='search' placeholder='Search by vehicles...' aria-describedby='button-addon5')
+
+        br
+        ul(id='myList' class="list-group")
+            h4 Vehicles:
+            each val, i in vehicles
+                li(class="list-group-item")
+                    #accordion
+                        .card
+                            .card-header(id=i)
+                                .form-group
+                                    .row
+                                        .col-sm-10(style='text-align: left')
+                                            button.btn.btn-link( data-toggle='collapse' data-target= "#response" + i  aria-expanded='true' aria-controls=val.name) #{val.make} #{val.model} #{val.year}
+                                        
+
+                            .collapse(id= "response" + i aria-labelledby=i data-parent='#accordion')
+                                .card-body
+                                    .row
+                                        .col-md-10
+                                            p Rental Address: #{val.address}
+                                        .col-md-2
+                                            button.btn.btn-primary(type='button' data-toggle='collapse' data-target='#collapseExample' + i aria-expanded='false' aria-controls='collapseExample' + i) Book
+                                    .row
+                                        .col-md-12
+                                            br
+                                            .collapse(id="collapseExample" + i)
+                                                .card.card-body
+                                                    form(style="width: 300px;" id='form' + i name='myForm' onsubmit='handle();')
+                                                        .form-group(style='border: 0px;')
+                                                            input.form-control(style='display:none;' name='id' id='vehicle_id' + i value = val.id)
+                                                            |             Enter the date and time of pickup:
+                                                            input.form-control(type='datetime-local' name='datetime' id='time' + i)
+                                                            //- |         Enter the time of Pickup:
+                                                            //- input.form-control(type='time' name='time' id='time' + i aria-describedby='emailHelp')
+                                                            //- |         Enter the date of booking:
+                                                            //- input.form-control(type='date' name='date' id='date' + i)
+                                                            |         Enter the length of stay(in hours):
+                                                            input.form-control(type='number' name='stay' id='stay' + i)
+                                                            br
+                                                            input.btn.btn-primary(type='submit' id='button' + i  value='Submit')
+                                                            p.alert.alert-info( style='display:none; margin-top:20px;')

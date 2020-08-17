@@ -1,0 +1,138 @@
+doctype html
+head
+    title= title
+
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/custom.css')
+
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+    link(rel='stylesheet' href='http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css')
+    script(type='text/javascript' src='http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js')
+    script(type='text/javascript', src="/javascripts/admin.js")
+body
+    nav.navbar.navbar-default
+        .container-fluid
+            span(onclick='openNav()', style='font-size:30px;cursor:pointer')
+                a.navbar-brand
+                    b &#9776;
+        ul.nav.navbar-nav.navbar-center
+            li
+                p.fontDashheading(style=' color: white;') ADMIN DASHBOARD
+    #mySidenav.sidenav
+        a.closebtn(href='javascript:void(0)', onclick='closeNav()') &times;
+        br
+        br
+        a(href='/admin') MANAGE USER
+        br
+        a(href='/admin/managerental') MANAGE RENTAL
+        br
+        a(href='/admin/managepricing')  MANAGE PRICING
+        br
+        a(href="/admin/signup") ADMIN SIGNUP
+        br
+        a.active(href='/admin/managevehicles') MANAGE VEHICLES
+        br
+        a(href='#' onclick='logout();') LOGOUT
+        br
+    #main
+        .container
+            h1(align="center") MANAGE VEHICLES
+            br
+            .row
+                .col-sm-6
+                    h3(align='center') Add Vehicle Type
+                    br
+                    .form-addVehicleType(style='height: 287px;')
+                        label(for='vehicleType') Enter New Vehicle Type
+                        input(type='text' placeholder='eg Regular,Sedan etc' id='vehicleType' required='')
+                        br
+                        button(onclick='addNewVehicleType();') Add New Vehicle Type
+                .col-sm-6
+                    h3(align="center") Reassign Vehicle Location
+                    br
+                    .form-reassignvehicle
+                        label(for= 'vehicleId') Enter Vehicle Id
+                        select(placeholder='id' id='vehicleId' required='')
+                            each variable in vehicleValues
+                                option(value=variable.id) #{variable.id}.#{variable.name}
+                        label(for= 'rentalLocationId') Enter Rental Location
+                        select(placeholder='id' id='rentalLocationId' required='')
+                            each variable in rentalValues
+                                option(value=variable.id) #{variable.id}.#{variable.name}
+                        br
+                        button(onclick='reassignVehicle();') Re-Assign Vehicle
+            .row
+                .col-sm-12
+                    h3(align="center") Add New Vehicle
+                    br
+                    .form-addVehicle
+                        label(for='autoTypeId') Enter Vehicle Type Id
+                        select(placeholder='id' id='autoTypeId' required='')
+                            each variable in output
+                                option(value=variable.id) #{variable.id}.#{variable.name}
+                        label(for='autoName') Enter Name of the vehicle
+                        input(type='text' placeholder='Eg honda' id='autoName' required='')
+                        label(for='autoMake') Enter make value
+                        input(type='text' placeholder='Eg hondo' id='autoMake' required='')
+                        label(for='autoModel') Enter model value
+                        input(type='text' placeholder='Eg accord' id='autoModel' required='')
+                        label(for='autoYear') Enter Year of the model
+                        input(type='number' placeholder='Eg 2016' id='autoYear' required='')
+                        label(for='regNum') Enter Registration Num
+                        input(type='text' placeholder='Eg 7XRM456' id='regNum' required='')
+                        label(for= 'renLoc') Enter Rental Location
+                        select(placeholder='id' id='renLoc' required='')
+                            each variable in rentalValues
+                                option(value=variable.id) #{variable.id}.#{variable.name}
+                        label(for='mileage') Enter Mileage
+                        input(type='text' placeholder='Eg 60miles/gallon' id='mileage' required='')
+                        label(for='lastService') Enter last service
+                        input(type='text' placeholder='sep 2019' id='lastService' required='')
+                        br
+                        button(onclick='addNewVehicle();') Add New Vehicle
+            .row
+                .col-sm-4
+                    h3(align="center") Remove Vehicle
+                    br
+                    .form-deleteVehicle
+                        label(for='vehId') Enter Vehicle Id
+                        select(placeholder = 'id' id="vehId" required='')
+                            each variable in vehicleValues
+                                option(value=variable.id) #{variable.id}.#{variable.name}
+                        br
+                        button(onclick="deleteVehicle();") Delete Vehicle
+                .col-sm-8
+                    h3(align="center") Update Vehicle Properties
+                    br
+                    .form-updateVehicle
+                        label(for="upVehicleId") Select vehicle id
+                        select(placeholder='id' id="upVehicleId" required='')
+                            each variable in vehicleValues
+                                option(value=variable.id) #{variable.id}.#{variable.name}
+                        br
+                        button(onclick='vMile();') update Mileage
+                        | &nbsp;&nbsp;
+                        span
+                            button(onclick='vServ();') update last service
+                        | &nbsp;&nbsp;
+                        span
+                            button(onclick = 'vRegNum();') update registration number
+                        #upMile.upMile
+                            label(for='vMile') Enter Vehicle Mileage
+                            input(type='text' placeholder='mileage' id='vMile' required='')
+                            br
+                            button(onclick='updateVehMile();') Update
+                        #upServ.upServ
+                            label(for='vServ') Enter Vehicle Last Service
+                            input(type='text' placeholder='service' id='vServ' required='')
+                            br
+                            button(onclick='updateVehServ();') Update
+                        #upRegNum.upRegNum
+                            label(for='vRegNum') Enter Vehicle Registration Number
+                            input(type='text' placeholder='regnum' id='vRegNum' required='')
+                            br
+                            button(onclick='updateVehRegNum();') Update

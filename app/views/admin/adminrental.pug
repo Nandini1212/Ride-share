@@ -1,0 +1,96 @@
+doctype html
+head
+    title= title
+
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/custom.css')
+
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+    link(rel='stylesheet' href='http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css')
+    script(type='text/javascript' src='http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js')
+    script(type='text/javascript', src="/javascripts/admin.js")
+
+body
+    nav.navbar.navbar-default
+        .container-fluid
+            span(onclick='openNav()', style='font-size:30px;cursor:pointer')
+                a.navbar-brand
+                    b &#9776;
+        ul.nav.navbar-nav.navbar-center
+            li
+                p.fontDashheading(style=' color: white;') ADMIN DASHBOARD
+    #mySidenav.sidenav
+        a.closebtn(href='javascript:void(0)', onclick='closeNav()') &times;
+        br
+        br
+        a(href='/admin') MANAGE USER
+        br
+        a.active(href='/admin/managerental') MANAGE RENTAL
+        br
+        a(href='/admin/managepricing')  MANAGE PRICING
+        br
+        a(href='/admin/managevehicles') MANAGE VEHICLES
+        br
+        a(href="/admin/signup") ADMIN SIGNUP
+        br
+        a(href='#' onclick='logout();') LOGOUT
+        br
+    #main
+        .container
+            h1(align="center") MANAGE RENTAL LOCATION
+            br
+            .row
+                .col-sm-12
+                    h3(align="center") Add Rental Location
+                    .form-addRental
+                        label(for='rentalname') Enter Rental Location Name
+                        input(type='text' placeholder='rental name' id='rentalname' required='')
+                        br
+                        label(for='rentaladdress') Enter Rental Location Address
+                        input(type='text' placeholder='address' id='rentaladdress' required='')
+                        br
+                        label(for='rentalcapacity') Enter Rental Location capacity
+                        input(type='number' placeholder='capacity' id='rentalcapacity' required='')
+                        br
+                        button(onclick='addNewRental();') Add New Rental
+            .row
+                .col-sm-4
+                    h3(align="center") Delete Rental Location
+                    .form-deleteRental
+                        label(for="rentalLocId") Select Rental Location
+                        select(placeholder="id" id="rentalLocId" required = '')
+                            each variable in rows
+                                option(value=variable.id) #{variable.id}.#{variable.name}
+                        br
+                        button(onclick="deleteRental();") Delete Rental Location
+                .col-sm-8
+                    h3(align="center") Update Rental Location
+                    .form-updateRental
+                        label(for="upRentalId") Update Rental Location
+                        select(placeholder='id' id="upRentalId" required='')
+                            each variable in rentalVals
+                                option(value=variable.id) #{variable.id}.#{variable.name}
+                        br
+                        button(onclick='vName();') update location name
+                        | &nbsp;&nbsp;
+                        span
+                            button(onclick='vAddr();') update location address
+                        | &nbsp;&nbsp;
+                        span
+                            button(onclick='vCap();') update location capacity
+                        #upName.upName
+                            label(for='vName') Enter Location Name
+                            input(type='text' placeholder='name' id='vName' required='')
+                            button(onclick='updateRenName();') Update
+                        #upAddr.upAddr
+                            label(for='vAddr') Enter Location Address
+                            input(type='text' placeholder='address' id='vAddr' required='')
+                            button(onclick='updateRenAddr();') Update
+                        #upCap.upCap
+                            label(for='vCap') Enter Location Capacity
+                            input(type='number' placeholder='capacity' id='vCap' required='')
+                            button(onclick='updateRenCap();') Update

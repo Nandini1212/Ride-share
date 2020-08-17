@@ -1,0 +1,103 @@
+doctype html
+head
+    title Car-Rental
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+    script(type='text/javascript', src="javascripts/driver_info.js")
+
+.login-div(style='margin-top: -5%')
+    .caption
+        span.border Car Rental
+    .login-page
+        .user-form
+            .container
+                .form-group
+                    label() Licence Issued In:
+                    select#countries(style='width: 100%; height: 38px;')
+                        option(value='-1') Country
+                        option(value='United States') United States
+                        option(value='Canada') Canada
+                        option(value='India') India
+                        option(value='Australia') Australia
+                        option(value='United Kingdom') United Kingdom
+                .form-group
+                    label(for='dlNumber') Driving License Number:
+                    input#dlNumber.form-control(type='text' placeholder='Drive License Number' name='dlNumber' required='')
+                    .valid-feedback Valid.
+                    .invalid-feedback Please fill out this field.
+                .form-group
+                    .row
+                        .col-sm-12
+                            label(for='ddlExpirymonth') License Expires on:
+                    .row
+                        .col-sm-6
+                            select#ddlExpirymonth(style='width: 100%; height: 38px;')
+                                option(value='-1') Month
+                                option(value='01') 01
+                                option(value='02') 02
+                                option(value='03') 03
+                                option(value='04') 04
+                                option(value='05') 05
+                                option(value='06') 06
+                                option(value='07') 07
+                                option(value='08') 08
+                                option(value='09') 09
+                                option(value='10') 10
+                                option(value='11') 11
+                                option(value='12') 12
+                        .col-sm-6
+                            select#ddlExpiryyear(style='width: 100%; height: 38px;')
+                                option(value='-1') Year
+                                option(value='20') 20
+                                option(value='21') 21
+                                option(value='22') 22
+                                option(value='23') 23
+                                option(value='24') 24
+                                option(value='25') 25
+                                option(value='26') 26
+                                option(value='27') 27
+                                option(value='28') 28
+                                option(value='29') 29
+                                option(value='30') 30
+                .form-group
+                    label(for='txtaddress') Address:
+                    input#txtaddress.form-control(type='text' placeholder='Address' name='address' required='')
+                    .valid-feedback Valid.
+                    .invalid-feedback Please fill out this field.
+                .form-group
+                    .row
+                        .col-sm-12
+                            label(for='txtfirstname') Your name as it appears on License:
+                    .row
+                        .col-sm-6
+                            input#txtfirstname.form-control(type='text' placeholder='First Name' name='firstname' required='')
+                            .valid-feedback Valid.
+                            .invalid-feedback Please fill out this field.
+                        .col-sm-6
+                            input#txtlastname.form-control(type='text' placeholder='Last Name' name='lastname' required='')
+                            .valid-feedback Valid.
+                            .invalid-feedback Please fill out this field.
+                .form-group
+                    .row
+                        .col-sm-12
+                            label Date of Birth:
+                    .row
+                        .col-sm-4
+                            input#txtDobDay.form-control(type='text' maxlength='2' placeholder='DD' name='DobDay' required='')
+                            .valid-feedback Valid.
+                            .invalid-feedback Please fill out this field.
+                        .col-sm-4
+                            input#txtDobMonth.form-control(type='text' maxlength='2' placeholder='MM' name='DobMonth' required='')
+                            .valid-feedback Valid.
+                            .invalid-feedback Please fill out this field.
+                        .col-sm-4
+                            input#txtDobYear.form-control(type='text' maxlength='4' placeholder='YYYY' name='DobYear' required='')
+                            .valid-feedback Valid.
+                            .invalid-feedback Please fill out this field.
+
+                .form-group
+                    br
+                    button(onclick='saveDriverInformation();') Sign Up

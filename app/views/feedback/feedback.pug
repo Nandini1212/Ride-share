@@ -1,0 +1,75 @@
+extends ../layout.pug
+
+block css
+    link(rel='stylesheet', type='text/css', href='/stylesheets/feedback.css')
+
+block scripts
+    script(type='text/javascript', src="javascripts/feedback.js")
+
+block content
+    div
+        section.container(style='box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); margin-top: 5%; background-color: #fff;')
+            .row(style='padding: 2%')
+                .col-md-12.col-md-offset-3.form-container
+                    h1 Feedback
+                    p  Please provide your feedback below:
+                    div#reused_form
+                        .row
+                            div.col-sm-12.form-group(align='center')
+                                .col-sm-12.form-group
+                                    label(style='font-weight: bold; font-size: 20px') Please select the appropriate booking
+                                .col-sm-12.form-group
+                                    select#ddlUserReservations(style='width: 30%; height: 38px;')
+                                        option(value='-1') Booking
+                        .row
+                            div.col-sm-12.form-group(align='center')
+                                .col-sm-12.form-group
+                                    label(style='font-weight: bold; font-size: 20px') How do you rate your overall experience?
+                                    p
+                                        table(width='30%')
+                                            tr
+                                                td
+                                                    label.radio-inline
+                                                        input#radio_experience1(type='radio' name='experience' value='bad')
+                                                        |                                         Bad
+                                                td
+                                                    label.radio-inline
+                                                        input#radio_experience2(type='radio' name='experience' value='average')
+                                                        |                                         Average
+                                                td
+                                                    label.radio-inline
+                                                        input#radio_experience3(type='radio' checked='true' name='experience' value='good')
+                                                        |                                         Good
+                        .row
+                            div.col-sm-12.form-group(align='center')
+                                .col-sm-12.form-group
+                                    label(style='font-weight: bold; font-size: 20px') Notify the condition of the car?
+                                    p
+                                        table(width='30%')
+                                            tr
+                                                td
+                                                    label.radio-inline
+                                                        input#radio_carcondition1(type='radio' name='carcondition' value='bad')
+                                                        |                                         Bad
+                                                td
+                                                    label.radio-inline
+                                                        input#radio_carcondition2(type='radio' name='carcondition' value='average')
+                                                        |                                         Average
+                                                td
+                                                    label.radio-inline
+                                                        input#radio_carcondition3(type='radio' checked='true' name='carcondition' value='good')
+                                                        |                                         Good
+                        .row
+                            .col-sm-12.form-group
+                                label(for='comments')  Comments:
+                                textarea#comments.form-control(type='textarea' name='comments' placeholder='Your Comments' maxlength='6000' rows='7')
+                        .row
+                            .col-sm-12.form-group
+                                button( onclick='saveFeedback();') Post
+                    #success_message(style='width:100%; height:100%; display:none; ')
+                        h3 Posted your feedback successfully!
+                    #error_message(style='width:100%; height:100%; display:none; ')
+                        h3 Error
+                        |  Sorry there was an error sending your form.
+    br
+    br

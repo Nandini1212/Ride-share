@@ -1,0 +1,58 @@
+doctype html
+html
+  head
+    title Car-Rental
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/menu.css')
+    link(rel='stylesheet', type='text/css', href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+    script(type='text/javascript', src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js")
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    script(type='text/javascript', src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+    script(type='text/javascript', src="https://kit.fontawesome.com/a076d05399.js")
+    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js')
+    script.
+      function logout(){
+        $.ajax({
+          type: 'POST',
+          url: '/logout',
+          data: {
+            'userId': localStorage.getItem('userId')
+          },
+          success: function (output) {
+            window.location.href = "/login";
+          }
+        });
+      }
+    block css
+    block scripts
+  body
+    header
+      header.clearfix
+        .container
+          .header-left
+            h1 Car Rental
+          .header-right
+            .container
+              .row
+                .col-sm-10
+                  label(for='open')
+                    span.hidden-desktop
+                  input#open(type='checkbox' name='')
+                  nav
+                    a#navHome(href='/users' class='active') Home
+                    a#navBook(href='/booking') Book Rental
+                    a#navFeedback(href='/feedback') Feedback
+                .col-sm-2
+                  .logout-header
+                    div(style='float: right;')
+                      i.fas.fa-power-off(style='font-size: 26px; vertical-align: middle; padding-top: 7px; cursor: pointer;' onclick='logout();')
+    block content
+    footer
+      div(align='center', style='align: center;')
+        .container
+          .row
+            .col-sm-12
+              p.text-center.text-muted &copy; Copyright 2020 Car Rental

@@ -1,0 +1,32 @@
+doctype html
+head
+    title Car-Rental
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    script(type='text/javascript', src="/javascripts/admin.js")
+.login-div
+    .caption
+        span.border Car Rental
+    .login-page(style='padding-top: 10%!important;')
+        .user-form
+            input(type='text' placeholder='first name' id='txtAdminfirstname' required='')
+            input(type='text' placeholder='last name' id='txtAdminlastname' required='')
+            input(type='email' placeholder='email address' pattern='[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}' id='txtAdminSignUpEmailAddress' required='')
+            input(type='text' placeholder='username' id='txtAdminSignUpUsername' required='')
+            input(type='password' placeholder='password' id='txtAdminSignUpPassword' required='')
+            input(type='tel' placeholder='phone number' maxlength=10 onkeypress='return isNumber(event)' pattern='[0-9]{3}[0-9]{3}[0-9]{4}' id='txtAdminSignUpPhoneNumber' required='')
+            .row
+                .col-sm-12
+                    table(width='100%')
+                        tr
+                            td
+                                input#txtadminDobDay.form-control(type='text' maxlength='2' placeholder='DD' name='DobDay' required='' onkeypress='return isNumber(event)')
+                            td
+                                input#txtadminDobMonth.form-control(type='text' maxlength='2' placeholder='MM' name='DobMonth' required='' onkeypress='return isNumber(event)')
+                            td
+                                input#txtadminDobYear.form-control(type='text' maxlength='4' placeholder='YYYY' name='DobYear' required='' onkeypress='return isNumber(event)')
+
+            button(id='btnAdminSignUp' onclick='adminSignup();') Sign Up
+            p.message
+                | Already registered?
+                a(href='/') Sign In

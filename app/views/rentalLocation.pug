@@ -1,0 +1,28 @@
+extends layout
+
+block scripts
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
+    script(type='text/javascript', src="/javascripts/rental_location.js")
+
+block content
+    .container(style="background-color:#dee2e6; margin-top: 2%; padding-top: 0.2%;")
+        ul.nav.nav-pills
+            li.nav-item
+                a.nav-link(href='/booking') Vehicles
+            li.nav-item
+                a.nav-link.active(href='/booking/locations') Rental Locations
+
+        br
+        input.form-control(type='search' id='search' placeholder='Search by rental locations...' aria-describedby='button-addon5')
+
+        .row
+            .col-md-6
+                div(style='margin-top: 30px;')
+                    h4 Rental Locations:
+                    ul(id='myList' class="list-group" style='padding-bottom: 1.5%')
+                        each location in locations
+                            li(class="list-group-item")
+                                button.btn.btn-link.shadow.p-3.mb-2.bg-white.rounded(style="width: 100%;" onclick='loadVehicles(' + location.id + ');') #{location.name}
+
+            .col-md-6
+                div(id='vehicles')

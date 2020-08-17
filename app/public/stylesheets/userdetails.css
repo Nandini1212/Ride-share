@@ -1,0 +1,245 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis:600,200|Great+Vibes);
+*, *:after, *:before {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+* {margin:0;padding:0;border: 0 none;position: relative;}
+[class="fa"]:before {font-family: 'fontawesome', sans-serif;}
+
+.table td, .table th{
+    border-top: 0px solid #dee2e6!important;
+}
+
+section {
+    background: #fff;
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
+    height: 600px;
+    overflow-y: scroll;
+    margin: 4rem auto;
+    box-shadow: 0 0 6px rgba(0,0,0,.4);
+}
+article {
+    position: absolute;
+    left: 0;
+    top: 5rem;
+    right: 0;
+    bottom: 0;
+    padding: 1rem 2rem 0;
+    overflow: auto;
+    transition: .7s;
+    transform: scale(0);
+    transform-origin: center right;
+    transition-delay: .1s;
+}
+article:before {
+    color: rgba(0,0,0,.2);
+    font-size: 4rem;
+    font-weight: 100;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: rgba(0,0,0,.6);
+}
+body > h2 {height: auto;}
+h2 img {
+    width: 120px;
+    height: auto;
+    background: #f9f9f9;
+    border: 5px solid rgba(0,0,0,.7);
+    border-radius: 50%;
+    padding: 5px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 7px rgba(0,0,0,.5);
+}
+h2 span {
+    font-family: Marker Felt;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 1rem;
+}
+h1 span {
+     font-family: Marker Felt;
+     font-weight: 400;
+     display: block;
+     margin-bottom: 1rem;
+ }
+footer ul {
+    width: 100%;
+    color: #037B49;
+}
+footer li {
+    list-style-type: none;
+    float: left;
+    width: 20%;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 100;
+}
+footer li::before {
+    display: block;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 100;
+}
+p, dl, ol {
+    line-height: 1.5;
+    font-size: 1.3rem;
+}
+ol li {margin: 0 0 .5rem 1rem;}
+dt {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-indent: 1.5rem;
+}
+/*
+nav {
+    background: #fff;
+    width: 100%;
+    height: 5rem;
+    box-shadow: 0 0 6px rgba(0,0,0,.4);
+}
+nav:after {
+    content:'';
+    width: 25%;
+    height: 5rem;
+    background: #BEE3D1;
+    position: absolute;
+    transition: .5s;
+}
+*/
+
+#pageNavigation{
+    background: #fff;
+    width: 100%;
+    height: 5rem;
+    box-shadow: 0 0 6px rgba(0,0,0,.4);
+}
+
+#pageNavigation:after {
+    content:'';
+    width: 25%;
+    height: 5rem;
+    background: #BEE3D1;
+    position: absolute;
+    transition: .5s;
+}
+
+#pageNavigation label{
+    width: 25%;
+    float: left;
+    color: #BEE3D1;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+    z-index: 2;
+    padding-top: 1.3%;
+}
+
+input {
+    display: none;
+}
+
+label:hover {color: #1E6743;}
+label:before {
+    display: block;
+    font-size: 3rem;
+    line-height: 5rem;
+    z-index: 2;
+}
+#profile:checked ~ nav [for='profile'],
+#settings:checked ~ nav [for='settings'],
+#posts:checked ~ nav [for='posts'],
+#books:checked ~ nav [for='books'] {
+    color: #1E6743;
+    font-weight: 600;
+}
+#settings:checked ~ nav [for='settings'] {}
+#profile:checked ~ nav [for='profile'] {}
+
+#profile:checked ~ nav:after {
+    left: 0;
+}
+#settings:checked ~ nav:after {
+    left:25%;
+    border-top: 0 none;
+}
+#posts:checked ~ nav:after {
+    left: 50%;
+}
+#books:checked ~ nav:after {
+    left: 75%;
+}
+
+#profile:checked ~ .uno,
+#settings:checked ~ .dos,
+#posts:checked ~ .tres,
+#books:checked ~ .cuatro {
+    margin: 2%;
+    display: block;
+    transform: scale(1);
+    transition-delay: .5s;
+}
+a {color: rgba(0,0,0,.4)}
+a:hover {color: rgba(0,0,0,.2)}
+
+.tblheading{
+    font-size: 16px;
+    font-weight: bold;
+    width: 25%;
+    background-color: #9ccde2;
+}
+.tbldata{
+    font-size: 16px;
+    width: 70%;
+}
+
+.tblbookingHistory {
+    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
+    font-size: 16px;
+    border-collapse: collapse;
+}
+
+.tblbookingHistory td, .tblbookingHistory th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tblbookingHistory tbody {
+    height: 650px;
+    overflow:auto;
+}
+
+.tblbookingHistory tbody {
+}
+
+.tblbookingHistory tr:nth-child(even){background-color: #f2f2f2;}
+
+.tblbookingHistory tr:hover {background-color: #ddd;}
+
+.tblbookingHistory th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #9ccde2;
+}
+
+.modal-header{
+    background-color: #9ccde2;
+    max-height: 68px;
+}
+
+.modelpopuup{
+    border-radius: 10px!important;
+}
+
+#pageNavigation label{
+    font-size: 20px;
+}

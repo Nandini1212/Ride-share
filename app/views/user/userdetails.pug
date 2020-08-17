@@ -1,0 +1,272 @@
+extends ../layout.pug
+
+block css
+    link(rel='stylesheet', type='text/css', href='/stylesheets/userdetails.css')
+
+block scripts
+    script(type='text/javascript', src="javascripts/userdetails.js")
+
+block content
+    div
+        div
+            div
+                section
+                    input#profile(type='radio' value='1' name='tractor' checked='checked')
+                    input#settings(type='radio' value='2' name='tractor')
+                    input#posts(type='radio' value='3' name='tractor')
+                    input#books(type='radio' value='4' name='tractor')
+                    nav(id='pageNavigation')
+                        label(title='User Details' for='profile')
+                            .fas.fa-house-user(for='profile')
+                            | &nbsp;&nbsp;&nbsp;&nbsp;User Details
+                        label(title='Driver Details' for='settings')
+                            .fa.fa-address-card(for='settings')
+                            | &nbsp;&nbsp;&nbsp;&nbsp;Driver Details
+                        label(title='Payment Details' for='posts')
+                            .fas.fa-money-check-alt(for='posts')
+                            | &nbsp;&nbsp;&nbsp;&nbsp;Payment Details
+                        label(title='Booking History' for='books')
+                            .fa.fa-list-alt(for='books')
+                            | &nbsp;&nbsp;&nbsp;&nbsp;Booking History
+                    article.uno
+                        h1
+                            span User Details
+                            br
+                            #tblUserDetails.table.table.table-bordered.table-hover(style='width: 100%')
+                            br
+                            div(style='text-align: right')
+                                .row
+                                    .col-sm-10
+                                    .col-sm-2
+                                        button(onclick='loadUserDetails();' data-toggle='modal' data-target='#userdetailsModelPopup') Edit
+                    article.dos
+                        h1
+                            span Driver Details
+                        br
+                        #tblDriverInfo.table.table.table-bordered.table-hover(style='width: 100%')
+                        br
+                        div(style='text-align: right')
+                            button(style='width: 10%' onclick='loadDriverInfo();' data-toggle='modal' data-target='#driverinfoModelPopup') Edit
+                    article.tres
+                        h1
+                            span Payment Details
+                        br
+                        #tblPayment.table.table.table-bordered.table-hover(style='width: 100%')
+                        br
+                        div(style='text-align: right')
+                            .row
+                                .col-sm-4
+                                .col-sm-3
+                                    button(onclick='terminateMembership();') Terminate Membership
+                                .col-sm-3
+                                    button(onclick='renewMembership();') Renew Membership
+                                .col-sm-2
+                                    button(onclick='loadPaymentDetails();' data-toggle='modal' data-target='#carddetailsModelPopup') Edit
+                    article.cuatro
+                        h1
+                            span Booking History
+                        br
+                        #tblBookingHistory.table.table.table-bordered(style='width: 100%' class='tblbookingHistory')
+
+                // Modal
+                #userdetailsModelPopup.modal.fade(tabindex='-1' role='dialog' aria-labelledby='userdetailsModelPopupTitle' aria-hidden='true' class='modelpopuup')
+                    .modal-dialog.modal-dialog-centered(role='document')
+                        .modal-content
+                            .modal-header
+                                table.table
+                                    tbody
+                                        tr
+                                            td(style='width: 90%')
+                                                h2
+                                                    span Edit User Details
+                                            td(style='width: 10%')
+                                                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                                    span(aria-hidden='true') &times;
+                            .modal-body
+                                .modal-body
+                                    form
+                                        .form-group
+                                            label.col-form-label(for='txtusername') Username:
+                                            input#txtusername.form-control(type='text' required='')
+                                        .form-group
+                                            label.col-form-label(for='txtemail') Email:
+                                            input#txtemail.form-control(type='email' required='')
+                                        .form-group
+                                            label.col-form-label(for='txtphone') Phone Number:
+                                            input#txtphone.form-control(type='text' maxlength=10 required='' onkeypress='return isNumber(event)')
+                                        .form-group
+                                            label.col-form-label(for='txtpassword') Password:
+                                            input#txtpassword.form-control(type='password' required='')
+                            .modal-footer
+                                button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                button.btn.btn-success(type='button' onclick='saveUserDetails();') Save changes
+
+                #driverinfoModelPopup.modal.fade(tabindex='-1' role='dialog' aria-labelledby='driverinfoModelPopupTitle' aria-hidden='true' class='modelpopuup')
+                    .modal-dialog.modal-dialog-centered(role='document')
+                        .modal-content
+                            .modal-header
+                                table.table
+                                    tbody
+                                        tr
+                                            td(style='width: 90%')
+                                                h2
+                                                    span Edit Driver Information
+                                            td(style='width: 10%')
+                                                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                                    span(aria-hidden='true') &times;
+                            .modal-body
+                                .modal-body
+                                    form
+                                        .form-group
+                                            label.col-form-label(for='selectLicenseIssueIn') Licence Issued In:
+                                            select#selectLicenseIssueIn(style='width: 100%; height: 38px;')
+                                                option(value='-1') Country
+                                                option(value='United States') United States
+                                                option(value='Canada') Canada
+                                                option(value='India') India
+                                                option(value='Australia') Australia
+                                                option(value='United Kingdom') United Kingdom
+                                        .form-group
+                                            label.col-form-label(for='txtLicenseNumber') Driving License Number:
+                                            input#txtLicenseNumber.form-control(type='text' required='')
+                                        .form-group
+                                            .row
+                                                .col-sm-12
+                                                    label.col-form-label(for='ddlDLExpirymonth') License Expires on:
+                                            .row
+                                                .col-sm-6
+                                                    select#ddlDLExpirymonth(style='width: 100%; height: 38px;')
+                                                        option(value='-1') Month
+                                                        option(value='01') 01
+                                                        option(value='02') 02
+                                                        option(value='03') 03
+                                                        option(value='04') 04
+                                                        option(value='05') 05
+                                                        option(value='06') 06
+                                                        option(value='07') 07
+                                                        option(value='08') 08
+                                                        option(value='09') 09
+                                                        option(value='10') 10
+                                                        option(value='11') 11
+                                                        option(value='12') 12
+                                                .col-sm-6
+                                                    select#ddlDLExpiryyear(style='width: 100%; height: 38px;')
+                                                        option(value='-1') Year
+                                                        option(value='20') 20
+                                                        option(value='21') 21
+                                                        option(value='22') 22
+                                                        option(value='23') 23
+                                                        option(value='24') 24
+                                                        option(value='25') 25
+                                                        option(value='26') 26
+                                                        option(value='27') 27
+                                                        option(value='28') 28
+                                                        option(value='29') 29
+                                                        option(value='30') 30
+                                        .form-group
+                                            label.col-form-label(for='txtaddress') Address:
+                                            input#txtaddress.form-control(type='text' required='')
+                                        .form-group
+                                            label.col-form-label(for='txtfirstname') First Name:
+                                            input#txtfirstname.form-control(type='text' required='')
+                                        .form-group
+                                            label.col-form-label(for='txtlastname') Last Name:
+                                            input#txtlastname.form-control(type='text' required='')
+                                        .form-group
+                                            .row
+                                                .col-sm-12
+                                                    label Date of Birth:
+                                            .row
+                                                .col-sm-4
+                                                    input#txtDobDay.form-control(type='text' maxlength='2' placeholder='DD' name='DobDay' required='' onkeypress='return isNumber(event)')
+                                                    .valid-feedback Valid.
+                                                    .invalid-feedback Please fill out this field.
+                                                .col-sm-4
+                                                    input#txtDobMonth.form-control(type='text' maxlength='2' placeholder='MM' name='DobMonth' required='' onkeypress='return isNumber(event)')
+                                                    .valid-feedback Valid.
+                                                    .invalid-feedback Please fill out this field.
+                                                .col-sm-4
+                                                    input#txtDobYear.form-control(type='text' maxlength='4' placeholder='YYYY' name='DobYear' required='' onkeypress='return isNumber(event)')
+                                                    .valid-feedback Valid.
+                                                    .invalid-feedback Please fill out this field.
+
+                            .modal-footer
+                                button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                button.btn.btn-success(type='button' onclick='saveDriverInfo();') Save changes
+
+                #carddetailsModelPopup.modal.fade(tabindex='-1' role='dialog' aria-labelledby='carddetailsModelPopupTitle' aria-hidden='true' class='modelpopuup')
+                    .modal-dialog.modal-dialog-centered(role='document')
+                        .modal-content
+                            .modal-header
+                                table.table
+                                    tbody
+                                        tr
+                                            td(style='width: 90%')
+                                                h2
+                                                    span Edit Card Details
+                                            td(style='width: 10%')
+                                                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                                    span(aria-hidden='true') &times;
+                            .modal-body
+                                .modal-body
+                                    form
+                                        .form-group
+                                            table.table
+                                                tbody
+                                                    tr
+                                                        td(style='width: 40%')
+                                                            .custom-control.custom-radio.custom-control-inline
+                                                                input#half-yearly.custom-control-input(type='radio' value="6" name='membership')
+                                                                label.custom-control-label(for='half-yearly') Half yearly
+                                                        td(style='width: 60%')
+                                                            .custom-control.custom-radio.custom-control-inline
+                                                                input#anually.custom-control-input(type='radio' value="12" name='membership')
+                                                                label.custom-control-label(for='anually') Annual (You'll save 20%)
+
+                                        .form-group
+                                            label.col-form-label(for='txtcardnumber') Card Number::
+                                            input#txtcardnumber.form-control(type='text' maxlength=19 required='' onkeypress='return isNumber(event)')
+                                        .form-group
+                                            .row
+                                                .col-sm-12
+                                                    label.col-form-label(for='ddlCardExpirymonth') Card Expires on:
+                                            .row
+                                                .col-sm-6
+                                                    select#ddlCardExpirymonth(style='width: 100%; height: 38px;')
+                                                        option(value='-1') Month
+                                                        option(value='01') 01
+                                                        option(value='02') 02
+                                                        option(value='03') 03
+                                                        option(value='04') 04
+                                                        option(value='05') 05
+                                                        option(value='06') 06
+                                                        option(value='07') 07
+                                                        option(value='08') 08
+                                                        option(value='09') 09
+                                                        option(value='10') 10
+                                                        option(value='11') 11
+                                                        option(value='12') 12
+                                                .col-sm-6
+                                                    select#ddlCardExpiryyear(style='width: 100%; height: 38px;')
+                                                        option(value='-1') Year
+                                                        option(value='20') 20
+                                                        option(value='21') 21
+                                                        option(value='22') 22
+                                                        option(value='23') 23
+                                                        option(value='24') 24
+                                                        option(value='25') 25
+                                                        option(value='26') 26
+                                                        option(value='27') 27
+                                                        option(value='28') 28
+                                                        option(value='29') 29
+                                                        option(value='30') 30
+                                        .form-group
+                                            label.col-form-label(for='txtcvv') CVV:
+                                            input#txtcvv.form-control(type='text' maxlength=4 required='')
+                                        .form-group
+                                            label.col-form-label(for='txtcardholdername') Card Holder Name:
+                                            input#txtcardholdername.form-control(type='text' required='')
+
+                            .modal-footer
+                                button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                button.btn.btn-success(type='button' onclick='savePaymentDetails();') Save changes

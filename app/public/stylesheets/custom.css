@@ -1,0 +1,286 @@
+
+.fullh {
+    height: 100%;
+    overflow:hidden;
+    position: absolute;
+}
+
+.select-list {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 47px; }
+
+input {
+    transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    padding-top: 10px;
+    -webkit-appearance: none; }
+input:focus + .form-label, input:valid + .form-label {
+    top: 1px;
+    font-size: 11px;
+    color: #000000; }
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    color:#000000;
+    background: transparent;
+    border: 1px solid #4CAF50;
+    padding-left: 5px;
+    height: 38px;
+}
+
+input:focus, select:focus {
+    border-bottom: 1px solid #d8dde3; }
+
+select {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    height: 38px;
+    color: #000000;
+    background: transparent;
+    border: 1px solid #4CAF50;
+    padding: 4px 0;
+}
+
+h3 {
+    color: #1e1408;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:black;
+    overflow-x: hidden;
+    padding-top: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Lato", sans-serif;
+    color: #d8dde3;
+    display: block;
+}
+.sidenavwidth {
+    width: 10%;
+}
+body {
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+}
+.sidenav a:hover {
+    color: #818181;
+}
+
+.sidenav>.active {
+    color: #646262;
+
+}
+.sidenav>.active>p  {color:#555}
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    height: 100%;
+}
+.verticalAlign {
+    vertical-align: middle;
+    text-align: left;
+    color: #d8dde3;
+}
+
+
+.verticalAlignCenter {
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+
+.navbar-default{background-color:#1e1408;font-size: 18px;border-color:#301f0a}
+
+
+.navbar-default{background-color:#4CAF50 ;font-size: 18px;border-color:#4CAF50 }
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+
+    /* the rest of your styling */
+}
+.navbar-default .navbar-nav>li>a{color:#fff;
+    vertical-align: middle;
+
+}
+.navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:focus,.navbar-default .navbar-nav>.active>a:hover{color: #000000;}
+
+.navbar{position:relative;min-height:70px;margin-bottom:20px;border:1px solid transparent}
+.container-fluid {
+    vertical-align: middle; min-height:70px;
+}
+.navbar-brand {
+    margin-right:35px;
+}
+.navbar2 {position:relative;min-height:60px;margin-bottom:0px;border:1px solid transparent}
+h1, h3 {
+    color:rgb(44, 128, 47);
+}
+h4 {
+    color:rgb(44, 128, 47);
+}
+
+.minh {
+    min-height:20px;
+}.fontDashheading {
+     font-family: "Lato", sans-serif;
+     font-size: 25px;
+     margin-top: 15px;
+     color: white;
+ }
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+.form-addRental {
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-deleteRental {
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form-addVehicle {
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-addVehicleType {
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-addPrice {
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-updateMembershipPrice{
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-updatePriceOrLateReturnFee{
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    overflow:scroll;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-reassignvehicle{
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-deleteVehicle{
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form-updateVehicle{
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-updateRental {
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-terminateUserMembership {
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-deleteUsers {
+    position: relative;
+    padding: 45px;
+    align: center;
+    margin: 0 auto 50px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.upPrice{
+    display:none;
+}
+.upFee{
+    display:none;
+}
+.upMile{
+    display:none;
+}
+.upRegNum{
+    display:none;
+}
+.upServ{
+    display:none;
+}
+.upName{
+    display:none;
+}
+.upAddr{
+    display:none;
+}
+.upCap{
+    display:none;
+}
+button{
+    background-color: #4CAF50;
+    color:#FFFFFF;
+}

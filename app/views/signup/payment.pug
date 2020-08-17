@@ -1,0 +1,80 @@
+doctype html
+head
+    title Car-Rental
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+    script(type='text/javascript', src="javascripts/payment.js")
+
+.login-div(style='margin-top: -5%')
+    .caption
+        span.border Car Rental
+    .login-page
+        .user-form
+            .container
+                .form-group
+                    h3 Monthly or Annual membership:
+                    br
+                    .row
+                        .col-sm-1
+                            input#half-yearly(type='radio' name='optmembership' value='6' checked='true')
+                        .col-sm-5
+                            label(for='half-yearly') Half yearly
+                        .col-sm-1
+                            input#anually(type='radio' name='optmembership' value='12')
+                        .col-sm-5
+                            label(for='anually') Annual (You'll save 20%)
+                .form-group
+                    label(for='txtCardNumber') Card Number:
+                    input#txtCardNumber.form-control(type='text' maxlength=19 placeholder='Card Number' name='txtCardNumber' required='')
+                    .valid-feedback Valid.
+                    .invalid-feedback Please fill out this field.
+                .form-group
+                    .row
+                        .col-sm-12
+                            label Card Expires On:
+                    .row
+                        .col-sm-6
+                            select#ddlCardmonth(style='width: 100%; height: 38px;')
+                                option(value='-1') Month
+                                option(value='01') 01
+                                option(value='02') 02
+                                option(value='03') 03
+                                option(value='04') 04
+                                option(value='05') 05
+                                option(value='06') 06
+                                option(value='07') 07
+                                option(value='08') 08
+                                option(value='09') 09
+                                option(value='10') 10
+                                option(value='11') 11
+                                option(value='12') 12
+                        .col-sm-6
+                            select#ddlCardyear(style='width: 100%; height: 38px;')
+                                option(value='-1') Year
+                                option(value='20') 20
+                                option(value='21') 21
+                                option(value='22') 22
+                                option(value='23') 23
+                                option(value='24') 24
+                                option(value='25') 25
+                                option(value='26') 26
+                                option(value='27') 27
+                                option(value='28') 28
+                                option(value='29') 29
+                                option(value='30') 30
+                .form-group
+                    label(for='txtcvv') CVV:
+                    input#txtcvv.form-control(type='text' maxlength=4 placeholder='CVV' name='txtcvv' required='')
+                    .valid-feedback Valid.
+                    .invalid-feedback Please fill out this field.
+                .form-group
+                    label(for='txtname') Card Holder Name:
+                    input#txtname.form-control(type='text' placeholder='Card Holder Name' name='txtname' required='')
+                    .valid-feedback Valid.
+                    .invalid-feedback Please fill out this field.
+                .form-group
+                    br
+                    button(onclick='savePaymentDetails();') Sign Up

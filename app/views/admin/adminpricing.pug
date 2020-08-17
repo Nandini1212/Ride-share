@@ -1,0 +1,100 @@
+doctype html
+head
+    title= title
+
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/custom.css')
+
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+    link(rel='stylesheet' href='http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css')
+    script(type='text/javascript' src='http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js')
+    script(type='text/javascript', src="/javascripts/admin.js")
+body
+    nav.navbar.navbar-default
+        .container-fluid
+            span(onclick='openNav()', style='font-size:30px;cursor:pointer')
+                a.navbar-brand
+                    b &#9776;
+        ul.nav.navbar-nav.navbar-center
+            li
+                p.fontDashheading(style=' color: white;') ADMIN DASHBOARD
+    #mySidenav.sidenav
+        a.closebtn(href='javascript:void(0)', onclick='closeNav()') &times;
+        br
+        br
+        a(href='/admin') MANAGE USER
+        br
+        a(href='/admin/managerental') MANAGE RENTAL
+        br
+        a.active(href='/admin/managepricing')  MANAGE PRICING
+        br
+        a(href='/admin/managevehicles') MANAGE VEHICLES
+        br
+        a(href="/admin/signup") ADMIN SIGNUP
+        br
+        a(href='#' onclick='logout();') LOGOUT
+        br
+    #main
+        .container
+            h1(align="center") MANAGE PRICING
+            br
+            br
+            .row(style='margin-top: 8%')
+                .col-sm-6
+                    h3(align="center") Update Membership Price
+                    br
+                    .form-updateMembershipPrice
+                        select(placeholder='name' id='membershipName' required='')
+                            each variable in output
+                                option(value=variable.name) #{variable.name}
+                        br
+                        label(for='memPrice') Enter Membership Price
+                        input(type='number' placeholder='membership price' id='memPrice' required='')
+                        br
+                        br
+                        button(onclick='updateMemPrice();') Update
+                .col-sm-6
+                    h3(align="center") Set Price And/ Late Fee
+                    br
+                    .form-updatePriceOrLateReturnFee(style='height: 297px')
+                        select(placeholder='id' id="vehTypeId" required='')
+                            each variable in vehTypes
+                                option(value=variable.id) #{variable.id}.#{variable.name}
+                        br
+                        br
+                        button(onclick='vPrice();') Set Price
+                        | &nbsp;&nbsp;&nbsp;
+                        span
+                            button(onclick='vFee();') Set Late Fee
+                        #upPrice.upPrice
+                            label(for="range") Select Range
+                            select(id="range" placeholder="range" onchange="getCurPrice(this);" required = '')
+                                option
+                                option(value = '1') 0-24
+                                option(value = '2') 25-48
+                                option(value = '3') 49-72
+                            br
+                            label(for='vPrice') Enter Vehicle Price
+                            input(type='number' placeholder='price' id='vPrice' required='')
+                            br
+                            button(onclick='updateVehPrice();') Update
+                        #upFee.upFee
+                            label(for='vFee') Enter Late Fee
+                            input(type='number' placeholder='price' id='vFee' required='')
+                            br
+                            button(onclick='updateVehFee();') Update
+
+
+
+
+
+
+
+
+
+
+

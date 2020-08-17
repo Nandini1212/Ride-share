@@ -1,0 +1,63 @@
+doctype html
+head
+    title= title
+
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/custom.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+    link(rel='stylesheet' href='http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css')
+    script(type='text/javascript' src='http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js')
+    script(type='text/javascript', src="/javascripts/admin.js")
+body
+    nav.navbar.navbar-default
+        .container-fluid
+            span(onclick='openNav()', style='font-size:30px;cursor:pointer')
+                a.navbar-brand
+                    b &#9776;
+        ul.nav.navbar-nav.navbar-center
+            li
+                p.fontDashheading(style=' color: white;') ADMIN DASHBOARD
+    #mySidenav.sidenav
+        a.closebtn(href='javascript:void(0)', onclick='closeNav()') &times;
+        br
+        br
+        a.active(href='/admin') MANAGE USER
+        br
+        a(href='/admin/managerental') MANAGE RENTAL
+        br
+        a(href='/admin/managepricing')  MANAGE PRICING
+        br
+        a(href='/admin/managevehicles') MANAGE VEHICLES
+        br
+        a(href="/admin/signup") ADMIN SIGNUP
+        br
+        a(href='#' onclick='logout();') LOGOUT
+        br
+    #main
+        .container#container
+            h1(align="center") Manage Users
+            br
+            .row(style='margin-top: 8%')
+                .col-sm-6
+                    h3(align="center" style='margin-top: 2%; margin-bottom: 2%') Terminate User Membership
+                    br
+                    .form-terminateUserMembership
+                        label(for="userid") Select User Id
+                        select(placeholder="userid", id = "userid" required = '' style='width: 100%; height: 38px;')
+                            each variable in userRows
+                                option(value=variable.user_id) #{variable.user_id}
+                        br
+                        button(onclick="terminateMembership();") Terminate User Membership
+                .col-sm-6
+                    h3(align="center" style='margin-top: 2%; margin-bottom: 2%') Remove User
+                    br
+                    .form-deleteUsers
+                        label(for="useridfordel") Select User Id
+                        select(placeholder="userid" id = "useridfordel" required = '' style='width: 100%; height: 38px;')
+                            each variable in userIds
+                                option(value=variable.id) #{variable.firstname}
+                        br
+                        button(onclick="deleteuser();") Remove User
